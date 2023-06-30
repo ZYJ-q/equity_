@@ -105,7 +105,7 @@
                 "init_fund": 500
             },
             {
-                "base_url": "https://api.binance.com",
+                "base_url": "https://fapi.binance.com",
                 "api_key": "knSdgBrtCd6BGlmMO5aHXmacsq4JfPPcra4V9qZiWI1DzqxbnCzPyOzrFYcdX9jr",
                 "secret_key": "NJlnEJgxajq3XFxGIcNQ4byBX3dcXPy2C1eE3gmlvBBn7WaE2SP7pTK8RwZT2Ds9",
                 "name": "9",

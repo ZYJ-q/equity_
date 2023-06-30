@@ -262,6 +262,7 @@ async fn real_time(
                     .unwrap(),
             );
             let name = bybit_config.get("name").unwrap().as_str().unwrap();
+            let new_name:u64 = name.parse().unwrap();
 
             if let Some(data) = bybit_futures_api.get_account_overview(Some("UNIFIED")).await {
                 let value: Value = serde_json::from_str(&data).unwrap();
@@ -270,7 +271,7 @@ async fn real_time(
                 for i in list{
                     let obj = i.as_object().unwrap();
                     let equity = obj.get("totalEquity").unwrap().as_str().unwrap();
-                    equity_bybit_map.insert(String::from("name"), Value::from(name));
+                    equity_bybit_map.insert(String::from("name"), Value::from(new_name));
                     equity_bybit_map.insert(String::from("time"), Value::from(date.clone()));
                     equity_bybit_map.insert(String::from("equity"), Value::from(equity));
                 }
@@ -283,8 +284,8 @@ async fn real_time(
             
 
         }
-        // let res = trade_mapper::TradeMapper::insert_bybit_equity(Vec::from(equity_bybit_histories.clone()));
-        // println!("插入bybit权益数据{}, 数据{:?}", res, Vec::from(equity_bybit_histories.clone()));
+        let res = trade_mapper::TradeMapper::insert_bybit_equity(Vec::from(equity_bybit_histories.clone()));
+        println!("插入bybit权益数据{}, 数据{:?}", res, Vec::from(equity_bybit_histories.clone()));
 
 
         // 获取账户信息

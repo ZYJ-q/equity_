@@ -57,7 +57,7 @@
         ],
         "futures": [
             {
-                "base_url": "https://api.binance.com",
+                "base_url": "https://fapi.binance.com",
                 "api_key": "YJ1N9IZvxjWHAJBNAT5yDeMwyQ4kEc2gxafVcGMoiNg3GFXwJBf5cwIqfh06iwuX",
                 "secret_key": "yvQhcfz9H76HKv2VEGkytvjFKjmMv1oksTj1uvOAnZJIaqEsNO1nyioxbhjQZQN3",
                 "name": "3",
@@ -65,7 +65,7 @@
                 "init_fund": 500
             },
             {
-                "base_url": "https://api.binance.com",
+                "base_url": "https://fapi.binance.com",
                 "api_key": "sIy6uALccS6TZYQf9hJrL0Z3R2R9nKU0Drnh7bqsNAugrHN0cgO2QcYb11QrcMgI",
                 "secret_key": "RaUHaC0GL735GATWiJJt4B9LBdW4ZHZ25e8BuG2Xh1CNBqu2ZtcU8vMeATHrFhNx",
                 "name": "4",
@@ -73,7 +73,7 @@
                 "init_fund": 500
             },
             {
-                "base_url": "https://api.binance.com",
+                "base_url": "https://fapi.binance.com",
                 "api_key": "6FbWc34XfgBTnl7bJW9dgyEeJRaj31qoVPOyv85Sp04kjvNKaAF3O2OZThnhhizf",
                 "secret_key": "lo0GpunLQfPW8dCDkaa2vY7P4tOmYKrPEzVt0pR1YrafFac7NVVUVOb0iWwTxS7Z",
                 "name": "7",
@@ -81,7 +81,7 @@
                 "init_fund": 500
             },
             {
-                "base_url": "https://api.binance.com",
+                "base_url": "https://fapi.binance.com",
                 "api_key": "HlzHqL5pw5ZOsHzN1cJQRSQRq03THqq3UdaL6iHliMdUpVFBSyPRgQXvXZRz3HGO",
                 "secret_key": "Zn00sJu6TxJLB2ubnuF95dTlmmm9lSmhOfy4K3pY9yn3AkOprr2X5KXALk2ZUEjo",
                 "name": "8",
@@ -89,7 +89,7 @@
                 "init_fund": 500
             },
             {
-                "base_url": "https://api.binance.com",
+                "base_url": "https://fapi.binance.com",
                 "api_key": "IrkOSyDiL0nBh6zcTEYmWDqMR9I2rmRDnU7tXG9nRqEInpoU8uwNC68GnrhvcJqT",
                 "secret_key": "T9lWTs8359kuqRMfBFHqbLXZlYB5S059LOO0M7zUk0WP9oV3jqH3YVEEqBbJ0QdJ",
                 "name": "12",

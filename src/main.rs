@@ -115,35 +115,38 @@ async fn real_time(
             );
             let name = binance_config.get("name").unwrap().as_str().unwrap();
             let new_name:u64 = name.parse().unwrap();
-            let pro_id = binance_config.get("pro_id").unwrap().as_str().unwrap();
+            // let pro_id = binance_config.get("pro_id").unwrap().as_str().unwrap();
 
             if let Some(data) = binance_futures_api.account(None).await {
                 let value: Value = serde_json::from_str(&data).unwrap();
                 let assets = value.as_object().unwrap().get("assets")
             .unwrap().as_array().unwrap();
             let mut new_total_equity = 0.00;
-            let mut best_price = 0.00;
+            // let mut best_price = 0.00;
             for a in assets {
                 let obj = a.as_object().unwrap();
                 let wallet_balance: f64 = obj.get("walletBalance").unwrap().as_str().unwrap().parse().unwrap();
                 let symbol = obj.get("asset").unwrap().as_str().unwrap();
     
                 if wallet_balance != 0.00 {
-                    if symbol == "BNB" && name == "4" {
+                    if symbol == "BNB"{
                         continue;
                     }
-                    if symbol == "ETH" && name == "3" || symbol == "BNB" && name == "12" {
-                        let asset = format!("{}USDT", symbol);
-                        if let Some(data) = binance_futures_api.get_klines(&asset).await {
-                            let v: Value = serde_json::from_str(&data).unwrap();
-                            let price_obj = v.as_object().unwrap();
-                            let price:f64 = price_obj.get("price").unwrap().as_str().unwrap().parse().unwrap();
-                            best_price = price;
-                            let new_price = wallet_balance * price;
-                            // new_total_balance += new_price;
-                            new_total_equity += new_price;
-                        }
+                    if symbol == "ETH" {
+                        continue;
                     }
+                    // if symbol == "ETH" && name == "3" || symbol == "BNB" && name == "12" {
+                    //     let asset = format!("{}USDT", symbol);
+                    //     if let Some(data) = binance_futures_api.get_klines(&asset).await {
+                    //         let v: Value = serde_json::from_str(&data).unwrap();
+                    //         let price_obj = v.as_object().unwrap();
+                    //         let price:f64 = price_obj.get("price").unwrap().as_str().unwrap().parse().unwrap();
+                    //         best_price = price;
+                    //         let new_price = wallet_balance * price;
+                    //         // new_total_balance += new_price;
+                    //         new_total_equity += new_price;
+                    //     }
+                    // }
     
                     let cross_un_pnl: f64 = obj.get("crossUnPnl").unwrap().as_str().unwrap().parse().unwrap();
                     let pnl = cross_un_pnl + wallet_balance;
@@ -152,14 +155,11 @@ async fn real_time(
                 }
             }
             // 权益
-            let new_total_equity_eth: f64 = ((new_total_equity / best_price) - 28.97086) * best_price;
+            // let new_total_equity_eth: f64 = ((new_total_equity / best_price) - 28.97086) * best_price;
             equity_map.insert(String::from("time"), Value::from(date));
             equity_map.insert(String::from("name"), Value::from(new_name));
-            if name == "3" {
-                equity_map.insert(String::from("equity"), Value::from(new_total_equity_eth.to_string()));
-            } else {
-                equity_map.insert(String::from("equity"), Value::from(new_total_equity.to_string()));
-            }
+            equity_map.insert(String::from("equity"), Value::from(new_total_equity.to_string()));
+            
             // equity_map.insert(String::from("prod_id"), Value::from(pro_id));
             equity_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_map));
